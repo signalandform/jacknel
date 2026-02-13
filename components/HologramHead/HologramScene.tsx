@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import HologramHead from "./HologramHead";
 import { useBloom } from "./SceneWithBloom";
@@ -18,10 +18,17 @@ function SceneContent() {
 }
 
 export default function HologramScene() {
+  const [dpr, setDpr] = useState(2);
+  useEffect(() => {
+    setDpr(
+      typeof window !== "undefined" && window.devicePixelRatio > 2 ? 1 : 2
+    );
+  }, []);
+
   return (
     <Canvas
       camera={{ position: [0, 0, 2.5], fov: 45 }}
-      dpr={[1, 2]}
+      dpr={dpr}
       gl={{ antialias: true, alpha: true }}
     >
       <Suspense fallback={null}>

@@ -26,6 +26,10 @@ const fragmentShader = `
   varying vec3 vNormal;
   varying vec3 vViewPosition;
 
+  float hash(float n) {
+    return fract(sin(n) * 43758.5453);
+  }
+
   void main() {
     vec3 viewDir = normalize(vViewPosition);
     float fresnel = pow(1.0 - max(dot(viewDir, vNormal), 0.0), uFresnelPower);
@@ -39,8 +43,13 @@ const fragmentShader = `
     // Base emissive: Fresnel edge glow + normal-based definition
     vec3 emissive = uColor * (0.25 + 0.6 * fresnel) * definition;
     
-    // Subtle scanline animation
-    float scanline = sin(vViewPosition.y * 80.0 + uTime * 2.0) * 0.5 + 0.5;
+    // Internal noise flicker (subtle, ~5%)
+    float noise = hash(floor(uTime * 12.0) + vViewPosition.x * 10.0 + vViewPosition.y * 10.0);
+    float flicker = 1.0 + (noise - 0.5) * 0.10;
+    emissive *= flicker;
+    
+    // Scanlines moving upward (thin horizontal bands)
+    float scanline = sin(gl_FragCoord.y * 0.6 + uTime * 5.0) * 0.5 + 0.5;
     emissive *= 1.0 - scanline * uScanlineIntensity;
     
     gl_FragColor = vec4(emissive, uOpacity * (0.5 + 0.5 * fresnel));
@@ -61,9 +70,9 @@ export function useHologramMaterial() {
       uniforms: {
         uColor: { value: new THREE.Vector3(HOLOGRAM_COLOR.r * 2, HOLOGRAM_COLOR.g * 2, HOLOGRAM_COLOR.b * 2) },
         uTime: { value: 0 },
-        uOpacity: { value: 0.75 },
-        uFresnelPower: { value: 2.5 },
-        uScanlineIntensity: { value: 0.08 },
+        uOpacity: { value: 0.72 },
+        uFresnelPower: { value: 2.0 },
+        uScanlineIntensity: { value: 0.18 },
         uDefinitionStrength: { value: 0.65 },
       },
     });

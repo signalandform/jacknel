@@ -1,16 +1,19 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import HologramErrorBoundary from "@/components/HologramHead/HologramErrorBoundary";
+
+const hologramFallback = (
+  <div className="flex aspect-square h-80 w-80 items-center justify-center rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
+    <div className="h-24 w-24 animate-pulse rounded-full bg-cyan-500/20" />
+  </div>
+);
 
 const HologramScene = dynamic(
   () => import("@/components/HologramHead").then((mod) => mod.HologramScene),
   {
     ssr: false,
-    loading: () => (
-      <div className="flex aspect-square h-80 w-80 items-center justify-center rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
-        <div className="h-24 w-24 animate-pulse rounded-full bg-cyan-500/20" />
-      </div>
-    ),
+    loading: () => hologramFallback,
   }
 );
 
@@ -137,7 +140,9 @@ export default function Home() {
             {/* hologram 3D head */}
             <div className="shrink-0">
               <div className="relative h-80 w-80 overflow-hidden rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
-                <HologramScene />
+                <HologramErrorBoundary fallback={hologramFallback}>
+                  <HologramScene />
+                </HologramErrorBoundary>
               </div>
             </div>
           </div>

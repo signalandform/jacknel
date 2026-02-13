@@ -27,9 +27,9 @@ export function useBloom() {
       new EffectPass(
         camera,
         new BloomEffect({
-          luminanceThreshold: 0.8,
-          luminanceSmoothing: 0.025,
-          intensity: 0.7,
+          luminanceThreshold: 0.85,
+          luminanceSmoothing: 0.03,
+          intensity: 0.55,
           mipmapBlur: true,
         })
       )
