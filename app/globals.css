@@ -5,8 +5,81 @@
 :root {
   --font-sans: var(--font-syne), system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  /* Palette (inspired by signalandform.net: dark, premium, calm) */
+  --base: #121214;
+  --contrast: #ffffff;
+  --muted: rgba(255, 255, 255, 0.72);
+  --card: rgba(255, 255, 255, 0.06);
+  --accent: #ff7a3d;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  color: var(--contrast);
+  background: var(--base);
+  font-size: 1.0625rem;
+}
+
+/* Site-wide background treatment (no parallax; stays calm and readable) */
+.site-bg {
+  background:
+    radial-gradient(800px 500px at 15% 15%, rgba(255, 122, 61, 0.14), transparent 60%),
+    radial-gradient(900px 600px at 85% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(900px 700px at 50% 90%, rgba(255, 255, 255, 0.10), transparent 60%),
+    linear-gradient(180deg, #0f0f10 0%, #141416 45%, #0f0f10 100%);
+}
+
+/* Subtle grain */
+.site-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.10;
+}
+
+/* Soft vignette */
+.site-bg::after {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(circle at 50% 30%, transparent 30%, rgba(0, 0, 0, 0.60) 100%);
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-hero-fade-up {
+    animation: hero-fade-up 0.8s ease-out forwards;
+  }
 }

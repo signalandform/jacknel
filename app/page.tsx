@@ -4,63 +4,53 @@ export default function Home() {
   const projects = [
     {
       title: "Project One",
-      description: "A brief description of your project—design, tech stack, and outcome.",
+      description:
+        "A brief description of your project—design, tech stack, and outcome.",
       tags: ["Design", "React", "Figma"],
       href: "#",
     },
     {
       title: "Project Two",
-      description: "Another project showcasing your range. Could be branding, web app, or product.",
+      description:
+        "Another project showcasing your range. Could be branding, web app, or product.",
       tags: ["Branding", "Next.js", "Motion"],
       href: "#",
     },
     {
       title: "Project Three",
-      description: "Your third featured work. Replace with real projects and links.",
+      description:
+        "Your third featured work. Replace with real projects and links.",
       tags: ["UI/UX", "TypeScript", "Tailwind"],
       href: "#",
     },
   ];
 
   return (
-    <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-ink/5">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="font-semibold text-lg tracking-tight">
-            Your Name
-          </Link>
-          <div className="flex gap-8 text-sm text-muted hover:[&>a]:text-ink transition-colors">
-            <Link href="#work">Work</Link>
-            <Link href="#about">About</Link>
-            <Link href="#contact">Contact</Link>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-[calc(100vh-8rem)]">
       {/* Hero */}
-      <section className="pt-32 pb-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-accent font-mono text-sm uppercase tracking-widest mb-4">
-            Designer & Developer
+      <section className="px-6 pb-20 pt-20 sm:pt-28">
+        <div className="mx-auto max-w-5xl">
+          <p className="animate-hero-fade-up font-mono text-sm uppercase tracking-widest text-contrast/60">
+            Designer · Engineer · Operator
           </p>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-            I craft digital experiences that look good and work well.
+          <h1 className="mt-5 max-w-4xl animate-hero-fade-up text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+            I build clean, human software—and the brands around it.
           </h1>
-          <p className="text-xl text-muted max-w-2xl leading-relaxed">
-            Blending design sensibility with clean code. I build interfaces, brands,
-            and products that feel intentional.
+          <p className="mt-6 max-w-2xl animate-hero-fade-up text-lg leading-relaxed text-contrast/70">
+            Product design, UI engineering, and a bias for shipping. This site is a
+            living snapshot of what I&apos;m making.
           </p>
-          <div className="mt-12 flex gap-4">
+
+          <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="#work"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-cream font-medium rounded-full hover:bg-ink/90 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 text-sm font-medium text-base hover:bg-contrast/90"
             >
               View work
             </Link>
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-ink/20 font-medium rounded-full hover:border-ink/40 hover:bg-ink/5 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-contrast/90 hover:bg-white/5"
             >
               Get in touch
             </Link>
@@ -69,25 +59,38 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="work" className="py-24 px-6 border-t border-ink/5">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-sm font-mono text-muted uppercase tracking-widest mb-12">
-            Selected work
-          </h2>
-          <div className="space-y-16">
-            {projects.map((project, i) => (
-              <article key={i} className="group">
+      <section id="work" className="px-6 py-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-10 flex items-end justify-between gap-6">
+            <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
+              Selected work
+            </h2>
+            <span className="text-sm text-contrast/50">
+              (Replace placeholders with real case studies)
+            </span>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            {projects.map((project) => (
+              <article
+                key={project.title}
+                className="group rounded-3xl border border-white/10 bg-card p-6 transition hover:border-white/20 hover:bg-white/10"
+              >
                 <Link href={project.href} className="block">
-                  <div className="aspect-video bg-ink/5 rounded-2xl mb-6 group-hover:bg-ink/10 transition-colors" />
-                  <h3 className="text-2xl font-semibold mb-2 group-hover:text-accent transition-colors">
-                    {project.title}
+                  <div className="aspect-video rounded-2xl bg-white/5" />
+                  <h3 className="mt-6 text-xl font-semibold tracking-tight">
+                    <span className="group-hover:text-[color:var(--accent)]">
+                      {project.title}
+                    </span>
                   </h3>
-                  <p className="text-muted mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="mt-2 text-sm leading-relaxed text-contrast/65">
+                    {project.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs font-mono px-2 py-1 bg-ink/5 rounded text-muted"
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-contrast/70"
                       >
                         {tag}
                       </span>
@@ -101,67 +104,60 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="py-24 px-6 border-t border-ink/5 bg-ink text-cream">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-sm font-mono text-cream/60 uppercase tracking-widest mb-12">
-            About
-          </h2>
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <p className="text-xl leading-relaxed text-cream/90 mb-6">
-                I&apos;m a designer and developer based in [Your City]. I care about
-                thoughtful interfaces, clear typography, and systems that scale.
-              </p>
-              <p className="text-cream/70 leading-relaxed">
-                When I&apos;m not pushing pixels or writing code, you might find me
-                [hobby or interest]. I&apos;m always open to interesting projects
-                and collaborations.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-mono text-sm text-cream/60 uppercase tracking-widest mb-4">
-                Skills & tools
-              </h3>
-              <ul className="space-y-2 text-cream/90">
-                <li>UI/UX Design · Figma, Sketch</li>
-                <li>Frontend · React, Next.js, TypeScript</li>
-                <li>Styling · Tailwind, CSS</li>
-                <li>Motion · Framer Motion</li>
-              </ul>
-            </div>
+      <section id="about" className="px-6 py-20">
+        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
+          <div>
+            <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
+              About
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-contrast/75">
+              I&apos;m Jack. I care about typography, systems, and interfaces that
+              feel inevitable.
+            </p>
+            <p className="mt-4 leading-relaxed text-contrast/65">
+              If something needs to be designed and built (and actually shipped),
+              I&apos;m interested.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-card p-6">
+            <h3 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
+              Skills & tools
+            </h3>
+            <ul className="mt-5 space-y-2 text-contrast/75">
+              <li>Design systems · Figma</li>
+              <li>Frontend · Next.js, React, TypeScript</li>
+              <li>Backend · Node, Postgres</li>
+              <li>Ops · Vercel, Docker</li>
+            </ul>
           </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-6 border-t border-ink/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-sm font-mono text-muted uppercase tracking-widest mb-6">
-            Let&apos;s work together
+      <section id="contact" className="px-6 pb-24 pt-10">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-card p-10 text-center">
+          <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
+            Contact
           </h2>
-          <p className="text-2xl md:text-3xl font-semibold mb-8">
-            Have a project in mind? I&apos;d love to hear about it.
+          <p className="mx-auto mt-4 max-w-2xl text-2xl font-semibold tracking-tight">
+            Want to build something together?
           </p>
-          <div className="flex flex-wrap justify-center gap-6">
+          <p className="mt-3 text-contrast/65">
+            Email is best. Links below are placeholders—swap in your real profiles.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-6">
             <Link
-              href="mailto:hello@example.com"
-              className="text-accent font-medium hover:underline underline-offset-4"
+              href="mailto:jack@signalandformllc.com"
+              className="font-medium text-[color:var(--accent)] hover:underline underline-offset-4"
             >
-              hello@example.com
-            </Link>
-            <Link
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted hover:text-ink transition-colors"
-            >
-              Twitter
+              jack@signalandformllc.com
             </Link>
             <Link
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-ink transition-colors"
+              className="text-contrast/60 hover:text-contrast"
             >
               GitHub
             </Link>
@@ -169,21 +165,13 @@ export default function Home() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-ink transition-colors"
+              className="text-contrast/60 hover:text-contrast"
             >
               LinkedIn
             </Link>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-ink/5">
-        <div className="max-w-4xl mx-auto flex justify-between items-center text-sm text-muted">
-          <span>© {new Date().getFullYear()} Your Name</span>
-          <span>Built with Next.js · Deployed on Vercel</span>
-        </div>
-      </footer>
-    </main>
+    </div>
   );
 }
