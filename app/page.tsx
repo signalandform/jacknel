@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const portfolioItems = [
@@ -85,21 +86,19 @@ export default function Home() {
 
   return (
     <div className="min-h-[calc(100vh-8rem)]">
-      {/* HERO */}
+      {/* hero */}
       <section className="px-6 pb-16 pt-14 sm:pt-20">
         <div className="mx-auto max-w-5xl">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            jack nelson
-          </h1>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">jack nelson</h1>
           <p className="mt-4 text-lg text-contrast/70">
-            Product Designer blending UX, visual craft, and implementation
+            product designer blending ux, visual craft, and implementation
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="#portfolio"
               className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 text-sm font-medium text-base hover:bg-contrast/90"
             >
-              Portfolio
+              portfolio
             </Link>
             <Link
               href="#contact"
@@ -109,10 +108,10 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* ABOUT ME */}
+          {/* about */}
           <div className="mt-14 rounded-3xl border border-white/10 bg-card p-8">
             <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-              About Me
+              about me
             </h2>
             <div className="mt-5 space-y-4 leading-relaxed text-contrast/70">
               <p>
@@ -140,11 +139,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PORTFOLIO */}
+      {/* portfolio */}
       <section id="portfolio" className="px-6 py-16">
         <div className="mx-auto max-w-5xl">
           <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-            Portfolio
+            portfolio
           </h2>
 
           <div className="mt-8 space-y-8">
@@ -218,14 +217,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT */}
+      {/* contact */}
       <section id="contact" className="px-6 pb-24 pt-6">
         <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-card p-10">
           <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-            Contact Me
+            contact
           </h2>
           <p className="mt-4 text-lg text-contrast/70">
-            Fill out the form or email me at{" "}
+            fill out the form or email me at{" "}
             <Link
               href="mailto:hello@jacknel.com"
               className="text-[color:var(--accent)] hover:underline underline-offset-4"
@@ -233,6 +232,8 @@ export default function Home() {
               hello@jacknel.com
             </Link>
           </p>
+
+          <ContactForm />
 
           <div className="mt-6 flex flex-wrap gap-6 text-sm">
             <span className="text-contrast/60">(214) 803 2520</span>
