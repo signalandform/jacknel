@@ -1,5 +1,18 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+
+const HologramScene = dynamic(
+  () => import("@/components/HologramHead").then((mod) => mod.HologramScene),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex aspect-square h-64 w-64 items-center justify-center rounded-3xl border border-white/10 bg-black/20 sm:h-80 sm:w-80">
+        <div className="h-24 w-24 animate-pulse rounded-full bg-cyan-500/20" />
+      </div>
+    ),
+  }
+);
 
 export default function Home() {
   const portfolioItems = [
@@ -121,13 +134,10 @@ export default function Home() {
               </p>
             </div>
 
-            {/* profile spot (swap for image later) */}
+            {/* hologram 3D head */}
             <div className="shrink-0">
-              <div className="relative h-28 w-28 overflow-hidden rounded-full border border-white/15 bg-white/5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(157,194,234,0.35),transparent_55%),radial-gradient(circle_at_70%_70%,rgba(155,144,201,0.28),transparent_60%)]" />
-                <div className="relative flex h-full w-full items-center justify-center font-mono text-sm uppercase tracking-widest text-contrast/70">
-                  jn
-                </div>
+              <div className="relative h-64 w-64 overflow-hidden rounded-3xl border border-white/10 bg-black/20 sm:h-80 sm:w-80">
+                <HologramScene />
               </div>
             </div>
           </div>
