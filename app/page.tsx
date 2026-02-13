@@ -45,7 +45,23 @@ export default function Home() {
           body: "TypeStrip shipped as a functional iOS product with a clean, focused interface. The project reinforced the value of restraint in design and building features that serve the primary user goal without distraction.",
         },
       ],
-      links: [{ label: "Sign up For Beta Test", href: "https://typestrip.com" }],
+      links: [{ label: "website", href: "https://typestrip.com" }],
+    },
+    {
+      id: "citestack",
+      title: "CiteStack",
+      subtitle: "citation + research workflow",
+      sections: [
+        {
+          heading: "Overview",
+          body: "CiteStack is a lightweight system for capturing sources, organizing notes, and keeping citations close to the writing process.",
+        },
+        {
+          heading: "My Role",
+          body: "product design + front-end implementation.",
+        },
+      ],
+      links: [{ label: "github", href: "https://github.com/signalandform/citestack" }],
     },
     {
       id: "countrtop",
@@ -89,10 +105,24 @@ export default function Home() {
       {/* hero */}
       <section className="px-6 pb-16 pt-14 sm:pt-20">
         <div className="mx-auto max-w-5xl">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">jack nelson</h1>
-          <p className="mt-4 text-lg text-contrast/70">
-            product designer blending ux, visual craft, and implementation
-          </p>
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">jack nelson</h1>
+              <p className="mt-4 text-lg text-contrast/70">
+                product designer blending ux, visual craft, and implementation
+              </p>
+            </div>
+
+            {/* profile spot (swap for image later) */}
+            <div className="shrink-0">
+              <div className="relative h-28 w-28 overflow-hidden rounded-full border border-white/15 bg-white/5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(157,194,234,0.35),transparent_55%),radial-gradient(circle_at_70%_70%,rgba(155,144,201,0.28),transparent_60%)]" />
+                <div className="relative flex h-full w-full items-center justify-center font-mono text-sm uppercase tracking-widest text-contrast/70">
+                  jn
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="#portfolio"
