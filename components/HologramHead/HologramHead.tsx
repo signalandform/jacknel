@@ -60,7 +60,7 @@ export default function HologramHead() {
   });
 
   return (
-    <group ref={groupRef} scale={1.2} position={[0, -0.1, 0]}>
+    <group ref={groupRef} scale={0.15} position={[0, -0.1, 0]}>
       <primitive object={clonedScene} />
     </group>
   );

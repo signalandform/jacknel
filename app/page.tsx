@@ -7,7 +7,7 @@ const HologramScene = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex aspect-square h-64 w-64 items-center justify-center rounded-3xl border border-white/10 bg-black/20 sm:h-80 sm:w-80">
+      <div className="flex aspect-square h-80 w-80 items-center justify-center rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
         <div className="h-24 w-24 animate-pulse rounded-full bg-cyan-500/20" />
       </div>
     ),
@@ -136,7 +136,7 @@ export default function Home() {
 
             {/* hologram 3D head */}
             <div className="shrink-0">
-              <div className="relative h-64 w-64 overflow-hidden rounded-3xl border border-white/10 bg-black/20 sm:h-80 sm:w-80">
+              <div className="relative h-80 w-80 overflow-hidden rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
                 <HologramScene />
               </div>
             </div>

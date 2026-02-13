@@ -21,6 +21,7 @@ const fragmentShader = `
   uniform float uOpacity;
   uniform float uFresnelPower;
   uniform float uScanlineIntensity;
+  uniform float uDefinitionStrength;
 
   varying vec3 vNormal;
   varying vec3 vViewPosition;
@@ -29,8 +30,14 @@ const fragmentShader = `
     vec3 viewDir = normalize(vViewPosition);
     float fresnel = pow(1.0 - max(dot(viewDir, vNormal), 0.0), uFresnelPower);
     
-    // Base emissive with Fresnel edge glow
-    vec3 emissive = uColor * (0.3 + 0.7 * fresnel);
+    // Directional shading for facial definition (nose, eyes, cheeks)
+    vec3 lightDir = normalize(vec3(0.4, 0.6, 0.7));
+    float NdotL = max(dot(vNormal, lightDir), 0.0);
+    float diffuse = mix(0.4, 1.0, NdotL);
+    float definition = mix(1.0, diffuse, uDefinitionStrength);
+    
+    // Base emissive: Fresnel edge glow + normal-based definition
+    vec3 emissive = uColor * (0.25 + 0.6 * fresnel) * definition;
     
     // Subtle scanline animation
     float scanline = sin(vViewPosition.y * 80.0 + uTime * 2.0) * 0.5 + 0.5;
@@ -57,6 +64,7 @@ export function useHologramMaterial() {
         uOpacity: { value: 0.75 },
         uFresnelPower: { value: 2.5 },
         uScanlineIntensity: { value: 0.08 },
+        uDefinitionStrength: { value: 0.65 },
       },
     });
 
