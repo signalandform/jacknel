@@ -1,173 +1,248 @@
 import Link from "next/link";
 
 export default function Home() {
-  const projects = [
+  const portfolioItems = [
     {
-      title: "Project One",
+      id: "signalandform",
+      title: "Signal & Form",
       description:
-        "A brief description of your project—design, tech stack, and outcome.",
-      tags: ["Design", "React", "Figma"],
-      href: "#",
+        "Signal & Form is my design studio where I deliver digital, brand, and visual design work for clients. Through this work, I collaborate directly with stakeholders, manage feedback cycles, and deliver polished design assets ready for implementation.",
+      metaLabel: "Clients:",
+      meta:
+        "Baja Quesadilla, T-Mac’s Cajun Pot, 90’s BBQ, Roanoke Food Pantry, Smashed Villa, Street Spice, NTAC",
+      links: [
+        { label: "signalandformllc.com", href: "https://signalandformllc.com" },
+      ],
     },
     {
-      title: "Project Two",
-      description:
-        "Another project showcasing your range. Could be branding, web app, or product.",
-      tags: ["Branding", "Next.js", "Motion"],
-      href: "#",
+      id: "typestrip",
+      title: "TypeStrip",
+      subtitle: "Privacy-First iOS OCR App",
+      sections: [
+        {
+          heading: "Overview",
+          body: "TypeStrip is a privacy-first iOS app designed to quickly extract text from images using on-device OCR. The goal was to create a fast, minimal experience that lets users capture, review, and export text without unnecessary friction or cloud dependency.",
+        },
+        {
+          heading: "Problem",
+          body: "Many OCR tools prioritize feature depth over speed and clarity, creating bloated workflows for a task that users want to complete in seconds. I wanted to design an experience that felt lightweight, intentional, and respectful of user privacy.",
+        },
+        {
+          heading: "My Role",
+          body: "I led the product from concept through execution, defining the UX flows, visual design, and interaction patterns. I designed the full interface and shipped the product with a focus on simplicity and usability.",
+        },
+        {
+          heading: "Design Process",
+          body: "I focused on reducing the experience to its essential steps: capture, review, and export. Early wireframes explored different navigation models before settling on a single, linear flow that minimized cognitive load. Visual design emphasized readability, spacing, and contrast, aligning with modern iOS patterns while avoiding unnecessary decoration.",
+        },
+        {
+          heading: "Solution",
+          body: "The final product consists of 5–6 core screens designed to support fast capture and review. Interactions are intentional and predictable, allowing users to complete tasks quickly without learning overhead.",
+        },
+        {
+          heading: "Outcome",
+          body: "TypeStrip shipped as a functional iOS product with a clean, focused interface. The project reinforced the value of restraint in design and building features that serve the primary user goal without distraction.",
+        },
+      ],
+      links: [{ label: "Sign up For Beta Test", href: "https://typestrip.com" }],
     },
     {
-      title: "Project Three",
-      description:
-        "Your third featured work. Replace with real projects and links.",
-      tags: ["UI/UX", "TypeScript", "Tailwind"],
-      href: "#",
+      id: "countrtop",
+      title: "CountrTop",
+      sections: [
+        {
+          heading: "Overview",
+          body: "CountrTop is a web-based platform supporting customer ordering, vendor operations, and administrative workflows. The product was informed directly by real-world experience using a Kitchen Display System (KDS) in a food-service environment.",
+        },
+        {
+          heading: "Problem",
+          body: "Many operational tools fail because they’re designed without understanding how work actually happens. In food service, speed, clarity, and error prevention matter more than feature density.",
+        },
+        {
+          heading: "My Role",
+          body: "I designed and implemented responsive UI across customer-facing pages, vendor workflows, and admin views. I was responsible for UX structure, visual design, and front-end execution.",
+        },
+        {
+          heading: "Design Process",
+          body: "I approached the product as a system of roles rather than a single interface. Early exploration focused on separating concerns between customers, vendors, and administrators while maintaining consistency across the platform. I intentionally avoided building features that would slow down core workflows, prioritizing clarity and speed over completeness.",
+        },
+        {
+          heading: "Solution",
+          body: "The resulting design supports multiple user roles with clear, focused interfaces tailored to their specific needs. Reusable UI patterns and consistent layouts help reduce cognitive load and support scalability.",
+        },
+        {
+          heading: "Outcome",
+          body: "CountrTop demonstrates how operational insight can improve product design by guiding better decisions about scope, structure, and interaction design.",
+        },
+      ],
+      links: [
+        { label: "GitHub", href: "https://github.com/signalandform/countrtop" },
+        { label: "Sandbox Vendor", href: "https://sunset.staging.countrtop.com" },
+        { label: "Sandbox KDS (1234)", href: "https://kds.staging.countrtop.com" },
+      ],
     },
   ];
 
   return (
     <div className="min-h-[calc(100vh-8rem)]">
-      {/* Hero */}
-      <section className="px-6 pb-20 pt-20 sm:pt-28">
+      {/* HERO */}
+      <section className="px-6 pb-16 pt-14 sm:pt-20">
         <div className="mx-auto max-w-5xl">
-          <p className="animate-hero-fade-up font-mono text-sm uppercase tracking-widest text-contrast/60">
-            Designer · Engineer · Operator
-          </p>
-          <h1 className="mt-5 max-w-4xl animate-hero-fade-up text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-            I build clean, human software—and the brands around it.
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+            jack nelson
           </h1>
-          <p className="mt-6 max-w-2xl animate-hero-fade-up text-lg leading-relaxed text-contrast/70">
-            Product design, UI engineering, and a bias for shipping. This site is a
-            living snapshot of what I&apos;m making.
+          <p className="mt-4 text-lg text-contrast/70">
+            Product Designer blending UX, visual craft, and implementation
           </p>
-
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href="#work"
+              href="#portfolio"
               className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 text-sm font-medium text-base hover:bg-contrast/90"
             >
-              View work
+              Portfolio
             </Link>
             <Link
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-contrast/90 hover:bg-white/5"
             >
-              Get in touch
+              contact me
             </Link>
+          </div>
+
+          {/* ABOUT ME */}
+          <div className="mt-14 rounded-3xl border border-white/10 bg-card p-8">
+            <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
+              About Me
+            </h2>
+            <div className="mt-5 space-y-4 leading-relaxed text-contrast/70">
+              <p>
+                I’m a product designer with a background in front-end development
+                and a deep interest in visual craft. My work sits at the
+                intersection of UX, interface design, and creative exploration,
+                where systems, aesthetics, and usability meet.
+              </p>
+              <p>
+                I’ve designed and shipped digital products end-to-end, from early
+                concept and wireframes to polished UI and production-ready
+                implementation. Alongside product work, I maintain an active
+                creative practice across illustration, branding, and experimental
+                visual design, which informs my sense of composition, hierarchy,
+                and interaction.
+              </p>
+              <p>
+                I enjoy working on products where clarity, performance, and
+                thoughtful design decisions matter—especially SaaS platforms,
+                internal tools, and systems-driven experiences built to hold up in
+                real use.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Projects */}
-      <section id="work" className="px-6 py-20">
+      {/* PORTFOLIO */}
+      <section id="portfolio" className="px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-10 flex items-end justify-between gap-6">
-            <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-              Selected work
-            </h2>
-            <span className="text-sm text-contrast/50">
-              (Replace placeholders with real case studies)
-            </span>
-          </div>
+          <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
+            Portfolio
+          </h2>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project) => (
+          <div className="mt-8 space-y-8">
+            {portfolioItems.map((item) => (
               <article
-                key={project.title}
-                className="group rounded-3xl border border-white/10 bg-card p-6 transition hover:border-white/20 hover:bg-white/10"
+                key={item.id}
+                id={item.id}
+                className="scroll-mt-28 rounded-3xl border border-white/10 bg-card p-8"
               >
-                <Link href={project.href} className="block">
-                  <div className="aspect-video rounded-2xl bg-white/5" />
-                  <h3 className="mt-6 text-xl font-semibold tracking-tight">
-                    <span className="group-hover:text-[color:var(--accent)]">
-                      {project.title}
-                    </span>
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-contrast/65">
-                    {project.description}
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight">
+                      {item.title}
+                    </h3>
+                    {item.subtitle ? (
+                      <p className="mt-1 text-sm text-contrast/65">
+                        {item.subtitle}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+
+                {item.description ? (
+                  <p className="mt-5 leading-relaxed text-contrast/70">
+                    {item.description}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-contrast/70"
-                      >
-                        {tag}
-                      </span>
+                ) : null}
+
+                {item.meta ? (
+                  <p className="mt-5 text-sm leading-relaxed text-contrast/65">
+                    <span className="font-medium text-contrast/80">
+                      {item.metaLabel || ""}
+                    </span>{" "}
+                    {item.meta}
+                  </p>
+                ) : null}
+
+                {item.sections?.length ? (
+                  <div className="mt-6 grid gap-6 md:grid-cols-2">
+                    {item.sections.map((s) => (
+                      <div key={s.heading}>
+                        <h4 className="font-mono text-xs uppercase tracking-widest text-contrast/60">
+                          {s.heading}
+                        </h4>
+                        <p className="mt-2 text-sm leading-relaxed text-contrast/70">
+                          {s.body}
+                        </p>
+                      </div>
                     ))}
                   </div>
-                </Link>
+                ) : null}
+
+                {item.links?.length ? (
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    {item.links.map((l) => (
+                      <Link
+                        key={l.href}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-contrast/80 hover:border-white/25 hover:bg-white/10"
+                      >
+                        {l.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="px-6 py-20">
-        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-              About
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-contrast/75">
-              I&apos;m Jack. I care about typography, systems, and interfaces that
-              feel inevitable.
-            </p>
-            <p className="mt-4 leading-relaxed text-contrast/65">
-              If something needs to be designed and built (and actually shipped),
-              I&apos;m interested.
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-card p-6">
-            <h3 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-              Skills & tools
-            </h3>
-            <ul className="mt-5 space-y-2 text-contrast/75">
-              <li>Design systems · Figma</li>
-              <li>Frontend · Next.js, React, TypeScript</li>
-              <li>Backend · Node, Postgres</li>
-              <li>Ops · Vercel, Docker</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="px-6 pb-24 pt-10">
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-card p-10 text-center">
+      {/* CONTACT */}
+      <section id="contact" className="px-6 pb-24 pt-6">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-card p-10">
           <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
-            Contact
+            Contact Me
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-2xl font-semibold tracking-tight">
-            Want to build something together?
-          </p>
-          <p className="mt-3 text-contrast/65">
-            Email is best. Links below are placeholders—swap in your real profiles.
+          <p className="mt-4 text-lg text-contrast/70">
+            Fill out the form or email me at{" "}
+            <Link
+              href="mailto:hello@jacknel.com"
+              className="text-[color:var(--accent)] hover:underline underline-offset-4"
+            >
+              hello@jacknel.com
+            </Link>
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-6">
+          <div className="mt-6 flex flex-wrap gap-6 text-sm">
+            <span className="text-contrast/60">(214) 803 2520</span>
             <Link
-              href="mailto:jack@signalandformllc.com"
-              className="font-medium text-[color:var(--accent)] hover:underline underline-offset-4"
-            >
-              jack@signalandformllc.com
-            </Link>
-            <Link
-              href="https://github.com"
+              href="http://instagram.com/mjacknel"
               target="_blank"
               rel="noopener noreferrer"
               className="text-contrast/60 hover:text-contrast"
             >
-              GitHub
-            </Link>
-            <Link
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-contrast/60 hover:text-contrast"
-            >
-              LinkedIn
+              instagram
             </Link>
           </div>
         </div>
