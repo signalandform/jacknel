@@ -14,11 +14,15 @@ export default function Home() {
       links: [
         { label: "signalandformllc.com", href: "https://signalandformllc.com" },
       ],
+      hoverBg:
+        "radial-gradient(700px 320px at 18% 22%, rgba(157,194,234,0.18), transparent 60%), radial-gradient(800px 360px at 75% 60%, rgba(155,144,201,0.14), transparent 62%)",
     },
     {
       id: "typestrip",
       title: "TypeStrip",
       subtitle: "Privacy-First iOS OCR App",
+      hoverBg:
+        "radial-gradient(700px 320px at 22% 20%, rgba(157,194,234,0.16), transparent 60%), radial-gradient(760px 340px at 70% 65%, rgba(111,169,200,0.12), transparent 62%)",
       sections: [
         {
           heading: "Overview",
@@ -51,6 +55,8 @@ export default function Home() {
       id: "citestack",
       title: "CiteStack",
       subtitle: "citation + research workflow",
+      hoverBg:
+        "radial-gradient(720px 340px at 18% 28%, rgba(155,144,201,0.16), transparent 60%), radial-gradient(820px 380px at 78% 58%, rgba(157,194,234,0.12), transparent 62%)",
       sections: [
         {
           heading: "Overview",
@@ -66,6 +72,8 @@ export default function Home() {
     {
       id: "countrtop",
       title: "CountrTop",
+      hoverBg:
+        "radial-gradient(720px 340px at 20% 25%, rgba(111,169,200,0.14), transparent 60%), radial-gradient(860px 400px at 76% 62%, rgba(155,144,201,0.12), transparent 62%)",
       sections: [
         {
           heading: "Overview",
@@ -181,8 +189,25 @@ export default function Home() {
               <article
                 key={item.id}
                 id={item.id}
-                className="scroll-mt-28 rounded-3xl border border-white/10 bg-card p-8"
+                className="group relative isolate scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-card p-8"
               >
+                {/* hover reveal (image-ready). swap hoverBg for a real image later. */}
+                {item.hoverBg ? (
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    style={{ backgroundImage: item.hoverBg }}
+                    aria-hidden="true"
+                  />
+                ) : null}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(18,18,20,0.0) 0%, rgba(18,18,20,0.35) 55%, rgba(18,18,20,0.65) 100%)",
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="relative">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <h3 className="text-2xl font-semibold tracking-tight">
@@ -241,6 +266,7 @@ export default function Home() {
                     ))}
                   </div>
                 ) : null}
+                </div>
               </article>
             ))}
           </div>
