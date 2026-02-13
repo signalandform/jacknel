@@ -27,9 +27,9 @@ body {
 /* Site-wide background treatment (no parallax; stays calm and readable) */
 .site-bg {
   background:
-    radial-gradient(800px 500px at 15% 15%, rgba(157, 194, 234, 0.14), transparent 60%),
-    radial-gradient(900px 600px at 85% 20%, rgba(111, 169, 200, 0.10), transparent 55%),
-    radial-gradient(900px 700px at 50% 90%, rgba(155, 144, 201, 0.16), transparent 60%),
+    radial-gradient(1200px 800px at 15% 15%, rgba(157, 194, 234, 0.14), transparent 60%),
+    radial-gradient(1400px 900px at 85% 20%, rgba(111, 169, 200, 0.10), transparent 55%),
+    radial-gradient(1400px 1000px at 50% 90%, rgba(155, 144, 201, 0.16), transparent 60%),
     linear-gradient(180deg, #0f0f10 0%, #141416 45%, #0f0f10 100%);
 }
 
