@@ -6,7 +6,7 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 const MODEL_PATH = "/models/head.glb";
-const ROTATION_PERIOD_SEC = 10 / 100; // 100x faster: ~10 rotations per second
+const ROTATION_PERIOD_SEC = 10 / 250; // 100x faster: ~10 rotations per second
 const IDLE_ROTATION_SPEED = (Math.PI * 2) / ROTATION_PERIOD_SEC; // 2π / 10 ≈ 0.628
 const FLOAT_AMPLITUDE = 0.05;
 const FLOAT_SPEED = 0.8;
