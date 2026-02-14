@@ -4,7 +4,6 @@ import { useRef, useMemo, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import { useHologramMaterial } from "./HologramMaterial";
 
 const MODEL_PATH = "/models/head.glb";
 const ROTATION_PERIOD_SEC = 10;
@@ -25,7 +24,6 @@ export default function HologramHead() {
   const glitchFramesRef = useRef(0);
   const glitchOffsetRef = useRef({ x: 0, y: 0, rotZ: 0 });
   const { scene } = useGLTF(MODEL_PATH);
-  const hologramMaterial = useHologramMaterial();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -36,24 +34,13 @@ export default function HologramHead() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const clonedScene = useMemo(() => {
-    const clone = scene.clone();
-    clone.traverse((child) => {
-      if ((child as THREE.Mesh).isMesh) {
-        (child as THREE.Mesh).material = hologramMaterial;
-      }
-    });
-    return clone;
-  }, [scene, hologramMaterial]);
+  const clonedScene = useMemo(() => scene.clone(), [scene]);
 
   useFrame((state) => {
     if (!groupRef.current || !spinRef.current) return;
 
     const delta = state.clock.getDelta();
     const elapsed = state.clock.getElapsedTime();
-
-    // Update shader time for scanlines
-    hologramMaterial.uniforms.uTime.value = elapsed;
 
     // Idle rotation (slower when reduced motion)
     const rotSpeed = prefersReducedMotion ? 0.05 : IDLE_ROTATION_SPEED;

@@ -3,15 +3,13 @@
 import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import HologramHead from "./HologramHead";
-import { useBloom } from "./SceneWithBloom";
 
 function SceneContent() {
-  useBloom();
   return (
     <>
       <ambientLight intensity={0.2} />
       <directionalLight position={[5, 5, 5]} intensity={0.5} />
-      <pointLight position={[-5, 5, 5]} intensity={0.3} color="#00d4ff" />
+      <pointLight position={[-5, 5, 5]} intensity={0.3} />
       <HologramHead />
     </>
   );
