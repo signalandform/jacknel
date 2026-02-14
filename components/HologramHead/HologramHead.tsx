@@ -1,15 +1,14 @@
 "use client";
 
 import { useRef, useMemo, useEffect, useState } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { useHologramMaterial } from "./HologramMaterial";
 
 const MODEL_PATH = "/models/head.glb";
-const IDLE_ROTATION_SPEED = 0.6;
-const MOUSE_SENSITIVITY = 0.4;
-const LERP_FACTOR = 0.05;
+const ROTATION_PERIOD_SEC = 10;
+const IDLE_ROTATION_SPEED = (Math.PI * 2) / ROTATION_PERIOD_SEC; // 2π / 10 ≈ 0.628
 const FLOAT_AMPLITUDE = 0.05;
 const FLOAT_SPEED = 0.8;
 const GLITCH_CHANCE = 0.004;
@@ -22,13 +21,11 @@ export default function HologramHead() {
   const groupRef = useRef<THREE.Group>(null);
   const spinRef = useRef<THREE.Group>(null);
   const baseRotationRef = useRef(0);
-  const mouseOffsetRef = useRef(0);
   const glitchCooldownRef = useRef(GLITCH_MIN_COOLDOWN);
   const glitchFramesRef = useRef(0);
   const glitchOffsetRef = useRef({ x: 0, y: 0, rotZ: 0 });
   const { scene } = useGLTF(MODEL_PATH);
   const hologramMaterial = useHologramMaterial();
-  const { pointer } = useThree();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -62,13 +59,8 @@ export default function HologramHead() {
     const rotSpeed = prefersReducedMotion ? 0.05 : IDLE_ROTATION_SPEED;
     baseRotationRef.current += rotSpeed * delta;
 
-    // Mouse offset, smoothly lerped (pointer.x is -1 to 1)
-    const targetMouseOffset = pointer.x * MOUSE_SENSITIVITY;
-    mouseOffsetRef.current +=
-      (targetMouseOffset - mouseOffsetRef.current) * LERP_FACTOR;
-
     // Apply rotation: direct delta-based increment (avoids reconciler overwrite)
-    spinRef.current.rotation.y = baseRotationRef.current + mouseOffsetRef.current;
+    spinRef.current.rotation.y = baseRotationRef.current;
 
     // Vertical floating motion (sin wave)
     const floatOffset = prefersReducedMotion

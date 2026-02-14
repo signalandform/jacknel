@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import HologramErrorBoundary from "@/components/HologramHead/HologramErrorBoundary";
 
 const hologramFallback = (
-  <div className="flex aspect-square h-80 w-80 items-center justify-center rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
+  <div className="flex aspect-square w-[60vw] min-w-[280px] max-w-[800px] items-center justify-center rounded-3xl border border-white/10 bg-black/20">
     <div className="h-24 w-24 animate-pulse rounded-full bg-cyan-500/20" />
   </div>
 );
@@ -128,25 +128,25 @@ export default function Home() {
     <div className="min-h-[calc(100vh-8rem)]">
       {/* hero */}
       <section className="px-6 pb-16 pt-14 sm:pt-20">
-        <div className="mx-auto max-w-5xl">
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">jack nelson</h1>
-              <p className="mt-4 text-lg text-contrast/70">
-                product designer blending ux, visual craft, and implementation
-              </p>
-            </div>
-
-            {/* hologram 3D head */}
-            <div className="shrink-0">
-              <div className="relative h-80 w-80 overflow-hidden rounded-3xl border border-white/10 bg-black/20 sm:h-96 sm:w-96">
-                <HologramErrorBoundary fallback={hologramFallback}>
-                  <HologramScene />
-                </HologramErrorBoundary>
-              </div>
+        <div className="mx-auto flex max-w-5xl flex-col items-center">
+          {/* hologram 3D head - main hero element */}
+          <div className="w-[60vw] min-w-[280px] max-w-[800px]">
+            <div className="relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-black/20">
+              <HologramErrorBoundary fallback={hologramFallback}>
+                <HologramScene />
+              </HologramErrorBoundary>
             </div>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
+
+          {/* heading centered underneath */}
+          <div className="mt-8 text-center">
+            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">jack nelson</h1>
+            <p className="mt-4 text-lg text-contrast/70">
+              product designer blending ux, visual craft, and implementation
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               href="#portfolio"
               className="inline-flex items-center gap-2 rounded-full bg-contrast px-6 py-3 text-sm font-medium text-base hover:bg-contrast/90"
@@ -162,7 +162,7 @@ export default function Home() {
           </div>
 
           {/* about */}
-          <div className="mt-14 rounded-3xl border border-white/10 bg-card p-8">
+          <div className="mt-14 w-full rounded-3xl border border-white/10 bg-card p-8">
             <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
               about me
             </h2>
