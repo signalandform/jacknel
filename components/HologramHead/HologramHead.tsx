@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { useHologramMaterial } from "./HologramMaterial";
 
 const MODEL_PATH = "/models/head.glb";
-const IDLE_ROTATION_SPEED = 0.15;
+const IDLE_ROTATION_SPEED = 0.6;
 const MOUSE_SENSITIVITY = 0.4;
 const LERP_FACTOR = 0.05;
 const FLOAT_AMPLITUDE = 0.05;
@@ -20,6 +20,7 @@ const GLITCH_MAX_ROTATION = 0.02;
 
 export default function HologramHead() {
   const groupRef = useRef<THREE.Group>(null);
+  const spinRef = useRef<THREE.Group>(null);
   const baseRotationRef = useRef(0);
   const mouseOffsetRef = useRef(0);
   const glitchCooldownRef = useRef(GLITCH_MIN_COOLDOWN);
@@ -49,7 +50,7 @@ export default function HologramHead() {
   }, [scene, hologramMaterial]);
 
   useFrame((state) => {
-    if (!groupRef.current) return;
+    if (!groupRef.current || !spinRef.current) return;
 
     const delta = state.clock.getDelta();
     const elapsed = state.clock.getElapsedTime();
@@ -67,7 +68,8 @@ export default function HologramHead() {
     mouseOffsetRef.current +=
       (targetMouseOffset - mouseOffsetRef.current) * LERP_FACTOR;
 
-    groupRef.current.rotation.y = baseRotationRef.current + mouseOffsetRef.current;
+    // Apply rotation to inner group (no props = reconciler won't overwrite)
+    spinRef.current.rotation.y = baseRotationRef.current + mouseOffsetRef.current;
 
     // Vertical floating motion (sin wave)
     const floatOffset = prefersReducedMotion
@@ -114,7 +116,9 @@ export default function HologramHead() {
 
   return (
     <group ref={groupRef} scale={0.15}>
-      <primitive object={clonedScene} />
+      <group ref={spinRef}>
+        <primitive object={clonedScene} />
+      </group>
     </group>
   );
 }
