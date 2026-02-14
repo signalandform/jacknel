@@ -7,9 +7,15 @@ import HologramHead from "./HologramHead";
 function SceneContent() {
   return (
     <>
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[5, 5, 5]} intensity={0.7} />
-      <pointLight position={[-5, 5, 5]} intensity={0.25} color="#00d4ff" />
+      <hemisphereLight
+        color="#e8f4fc"
+        groundColor="#d4c4a8"
+        intensity={0.6}
+      />
+      <ambientLight intensity={1.5} />
+      <directionalLight position={[5, 5, 5]} intensity={5} />
+      <directionalLight position={[-5, 5, 5]} intensity={5} />
+      <pointLight position={[-5, 5, 5]} intensity={5} color="#fff5e6" />
       <HologramHead />
     </>
   );
