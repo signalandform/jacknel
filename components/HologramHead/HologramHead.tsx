@@ -19,7 +19,7 @@ const GLITCH_MAX_ROTATION = 0.02;
 export default function HologramHead() {
   const groupRef = useRef<THREE.Group>(null);
   const spinRef = useRef<THREE.Group>(null);
-  const baseRotationRef = useRef(0);
+  const [rotationY, setRotationY] = useState(0);
   const glitchCooldownRef = useRef(GLITCH_MIN_COOLDOWN);
   const glitchFramesRef = useRef(0);
   const glitchOffsetRef = useRef({ x: 0, y: 0, rotZ: 0 });
@@ -44,10 +44,7 @@ export default function HologramHead() {
 
     // Idle rotation (slower when reduced motion)
     const rotSpeed = prefersReducedMotion ? 0.05 : IDLE_ROTATION_SPEED;
-    baseRotationRef.current += rotSpeed * delta;
-
-    // Apply rotation: direct delta-based increment (avoids reconciler overwrite)
-    spinRef.current.rotation.y = baseRotationRef.current;
+    setRotationY((prev) => prev + rotSpeed * delta);
 
     // Vertical floating motion (sin wave)
     const floatOffset = prefersReducedMotion
@@ -94,7 +91,7 @@ export default function HologramHead() {
 
   return (
     <group ref={groupRef} scale={1.6}>
-      <group ref={spinRef}>
+      <group ref={spinRef} rotation={[0, rotationY, 0]}>
         <primitive object={clonedScene} />
       </group>
     </group>

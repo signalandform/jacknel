@@ -9,7 +9,7 @@ function SceneContent() {
     <>
       <ambientLight intensity={0.2} />
       <directionalLight position={[5, 5, 5]} intensity={0.5} />
-      <pointLight position={[-5, 5, 5]} intensity={0.3} />
+      <pointLight position={[-5, 5, 5]} intensity={0.15} color="#00d4ff" />
       <HologramHead />
     </>
   );
