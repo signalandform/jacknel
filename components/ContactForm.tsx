@@ -23,7 +23,7 @@ export default function ContactForm() {
   }, [name, email, message]);
 
   const inputClass =
-    "w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-contrast placeholder:text-contrast/50 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]";
+    "w-full rounded-2xl border border-contrast/10 bg-contrast/5 px-5 py-4 text-contrast placeholder:text-contrast/50 focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]";
 
   return (
     <form className="mt-8 grid gap-5" onSubmit={(e) => e.preventDefault()}>

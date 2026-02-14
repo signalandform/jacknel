@@ -4,8 +4,8 @@ import ContactForm from "@/components/ContactForm";
 import HologramErrorBoundary from "@/components/HologramHead/HologramErrorBoundary";
 
 const hologramFallback = (
-  <div className="flex aspect-square w-[60vw] min-w-[280px] max-w-[800px] items-center justify-center rounded-3xl border border-white/10 bg-black/20">
-    <div className="h-24 w-24 animate-pulse rounded-full bg-cyan-500/20" />
+  <div className="flex aspect-square w-[72vw] min-w-[336px] max-w-[960px] items-center justify-center">
+    <div className="h-24 w-24 animate-pulse rounded-full bg-[color:var(--accent)]/20" />
   </div>
 );
 
@@ -31,14 +31,14 @@ export default function Home() {
         { label: "signalandformllc.com", href: "https://signalandformllc.com" },
       ],
       hoverBg:
-        "radial-gradient(700px 320px at 18% 22%, rgba(157,194,234,0.18), transparent 60%), radial-gradient(800px 360px at 75% 60%, rgba(155,144,201,0.14), transparent 62%)",
+        "radial-gradient(700px 320px at 18% 22%, rgba(157,194,234,0.14), transparent 60%), radial-gradient(800px 360px at 75% 60%, rgba(155,144,201,0.11), transparent 62%)",
     },
     {
       id: "typestrip",
       title: "TypeStrip",
       subtitle: "Privacy-First iOS OCR App",
       hoverBg:
-        "radial-gradient(700px 320px at 22% 20%, rgba(157,194,234,0.16), transparent 60%), radial-gradient(760px 340px at 70% 65%, rgba(111,169,200,0.12), transparent 62%)",
+        "radial-gradient(700px 320px at 22% 20%, rgba(157,194,234,0.13), transparent 60%), radial-gradient(760px 340px at 70% 65%, rgba(111,169,200,0.10), transparent 62%)",
       sections: [
         {
           heading: "Overview",
@@ -72,7 +72,7 @@ export default function Home() {
       title: "CiteStack",
       subtitle: "citation + research workflow",
       hoverBg:
-        "radial-gradient(720px 340px at 18% 28%, rgba(155,144,201,0.16), transparent 60%), radial-gradient(820px 380px at 78% 58%, rgba(157,194,234,0.12), transparent 62%)",
+        "radial-gradient(720px 340px at 18% 28%, rgba(155,144,201,0.13), transparent 60%), radial-gradient(820px 380px at 78% 58%, rgba(157,194,234,0.10), transparent 62%)",
       sections: [
         {
           heading: "Overview",
@@ -89,7 +89,7 @@ export default function Home() {
       id: "countrtop",
       title: "CountrTop",
       hoverBg:
-        "radial-gradient(720px 340px at 20% 25%, rgba(111,169,200,0.14), transparent 60%), radial-gradient(860px 400px at 76% 62%, rgba(155,144,201,0.12), transparent 62%)",
+        "radial-gradient(720px 340px at 20% 25%, rgba(111,169,200,0.12), transparent 60%), radial-gradient(860px 400px at 76% 62%, rgba(155,144,201,0.10), transparent 62%)",
       sections: [
         {
           heading: "Overview",
@@ -130,8 +130,8 @@ export default function Home() {
       <section className="px-6 pb-16 pt-14 sm:pt-20">
         <div className="mx-auto flex max-w-5xl flex-col items-center">
           {/* hologram 3D head - main hero element */}
-          <div className="w-[60vw] min-w-[280px] max-w-[800px]">
-            <div className="relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-black/20">
+          <div className="w-[72vw] min-w-[336px] max-w-[960px]">
+            <div className="relative aspect-square">
               <HologramErrorBoundary fallback={hologramFallback}>
                 <HologramScene />
               </HologramErrorBoundary>
@@ -155,14 +155,14 @@ export default function Home() {
             </Link>
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-contrast/90 hover:bg-white/5"
+              className="inline-flex items-center gap-2 rounded-full border border-contrast/15 px-6 py-3 text-sm font-medium text-contrast/90 hover:bg-contrast/5"
             >
               contact me
             </Link>
           </div>
 
           {/* about */}
-          <div className="mt-14 w-full rounded-3xl border border-white/10 bg-card p-8">
+          <div className="mt-14 w-full rounded-3xl border border-contrast/10 bg-card p-8">
             <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
               about me
             </h2>
@@ -204,7 +204,7 @@ export default function Home() {
               <article
                 key={item.id}
                 id={item.id}
-                className="group relative isolate scroll-mt-28 overflow-hidden rounded-3xl border border-white/10 bg-card p-8"
+                className="group relative isolate scroll-mt-28 overflow-hidden rounded-3xl border border-contrast/10 bg-card p-8"
               >
                 {/* hover reveal (image-ready). swap hoverBg for a real image later. */}
                 {item.hoverBg ? (
@@ -218,7 +218,7 @@ export default function Home() {
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background:
-                      "linear-gradient(180deg, rgba(18,18,20,0.0) 0%, rgba(18,18,20,0.35) 55%, rgba(18,18,20,0.65) 100%)",
+                      "linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.2) 100%)",
                   }}
                   aria-hidden="true"
                 />
@@ -274,7 +274,7 @@ export default function Home() {
                         href={l.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-contrast/80 hover:border-white/25 hover:bg-white/10"
+                        className="rounded-full border border-contrast/15 bg-contrast/5 px-4 py-2 text-sm text-contrast/80 hover:border-contrast/25 hover:bg-contrast/10"
                       >
                         {l.label}
                       </Link>
@@ -290,7 +290,7 @@ export default function Home() {
 
       {/* contact */}
       <section id="contact" className="px-6 pb-24 pt-6">
-        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-card p-10">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-contrast/10 bg-card p-10">
           <h2 className="font-mono text-sm uppercase tracking-widest text-contrast/60">
             contact
           </h2>
