@@ -58,17 +58,16 @@ export default function HologramHead() {
     // Update shader time for scanlines
     hologramMaterial.uniforms.uTime.value = elapsed;
 
-    // Idle rotation (disabled when reduced motion)
-    if (!prefersReducedMotion) {
-      baseRotationRef.current += IDLE_ROTATION_SPEED * delta;
-    }
+    // Idle rotation (slower when reduced motion)
+    const rotSpeed = prefersReducedMotion ? 0.05 : IDLE_ROTATION_SPEED;
+    baseRotationRef.current += rotSpeed * delta;
 
     // Mouse offset, smoothly lerped (pointer.x is -1 to 1)
     const targetMouseOffset = pointer.x * MOUSE_SENSITIVITY;
     mouseOffsetRef.current +=
       (targetMouseOffset - mouseOffsetRef.current) * LERP_FACTOR;
 
-    // Apply rotation to inner group (no props = reconciler won't overwrite)
+    // Apply rotation: direct delta-based increment (avoids reconciler overwrite)
     spinRef.current.rotation.y = baseRotationRef.current + mouseOffsetRef.current;
 
     // Vertical floating motion (sin wave)

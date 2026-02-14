@@ -29,6 +29,7 @@ export default function HologramScene() {
     <Canvas
       camera={{ position: [0, 0, 2.5], fov: 45 }}
       dpr={dpr}
+      frameloop="always"
       gl={{ antialias: true, alpha: true }}
     >
       <Suspense fallback={null}>
