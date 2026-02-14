@@ -114,7 +114,7 @@ export default function HologramHead() {
   });
 
   return (
-    <group ref={groupRef} scale={0.8}>
+    <group ref={groupRef} scale={1.6}>
       <group ref={spinRef}>
         <primitive object={clonedScene} />
       </group>

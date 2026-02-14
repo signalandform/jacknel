@@ -56,7 +56,7 @@ const fragmentShader = `
   }
 `;
 
-const HOLOGRAM_COLOR = new THREE.Color("#00d4ff");
+const HOLOGRAM_COLOR = new THREE.Color("#5eb8e8");
 
 export function useHologramMaterial() {
   return useMemo(() => {
@@ -68,11 +68,11 @@ export function useHologramMaterial() {
       depthWrite: false,
       side: THREE.DoubleSide,
       uniforms: {
-        uColor: { value: new THREE.Vector3(HOLOGRAM_COLOR.r * 2, HOLOGRAM_COLOR.g * 2, HOLOGRAM_COLOR.b * 2) },
+        uColor: { value: new THREE.Vector3(HOLOGRAM_COLOR.r * 1.0, HOLOGRAM_COLOR.g * 1.0, HOLOGRAM_COLOR.b * 1.0) },
         uTime: { value: 0 },
-        uOpacity: { value: 0.72 },
+        uOpacity: { value: 0.55 },
         uFresnelPower: { value: 2.0 },
-        uScanlineIntensity: { value: 0.18 },
+        uScanlineIntensity: { value: 0.12 },
         uDefinitionStrength: { value: 0.65 },
       },
     });
